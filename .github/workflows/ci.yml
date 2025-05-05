@@ -1,0 +1,21 @@
+name: test_ci
+
+on:
+    push:
+    pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: format
+        run: make fmt
+
+      - name: checkFormat
+        run: make cFmt
+
+      - name: buildandtest
+        run: make test
